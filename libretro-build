@@ -44,7 +44,7 @@ makefile=
 makefile_dir=
 makefile_flags=()
 cmake_build_dir=build
-cmake_flags=(-DCMAKE_BUILD_TYPE=Release)
+cmake_flags=(-DCMAKE_BUILD_TYPE=Release -DBUILD_LIBRETRO=ON)
 core_filename=
 dest_filename=
 git_url=
