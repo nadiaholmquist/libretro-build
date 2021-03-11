@@ -49,6 +49,7 @@ core_filename=
 dest_filename=
 git_url=
 git_branch=
+no_submodules=0
 build_system=make
 CFLAGS="-march=native -mtune=native"
 CXXFLAGS="-march=native -mtune=native"
@@ -60,7 +61,11 @@ fi
 
 fetch() {
 	if [[ ! -e "build/$core_name" ]]; then
-		git clone --recursive "$git_url" "build/$core_name"
+		if [[ $no_submodules -eq 0 ]]; then
+			git clone --recursive "$git_url" "build/$core_name"
+		else
+			git clone "$git_url" "build/$core_name"
+		fi
 	fi
 
 	cd "build/$core_name"
@@ -72,7 +77,9 @@ fetch() {
 		git checkout origin/"$git_branch"
 	fi
 
-	git submodule update --init --recursive
+	if [[ $no_submodules -eq 0 ]]; then
+		git submodule update --init --recursive
+	fi
 }
 
 source "cores/$core_name"
