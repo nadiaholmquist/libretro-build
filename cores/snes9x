@@ -1,0 +1,4 @@
+#!/bin/bash
+git_url=https://github.com/snes9xgit/snes9x
+no_submodules=1
+makefile_dir=libretro
