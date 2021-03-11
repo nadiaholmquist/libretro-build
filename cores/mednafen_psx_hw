@@ -1,0 +1,6 @@
+#!/bin/bash
+git_url=https://github.com/libretro/beetle-psx-libretro
+git_branch=master
+make_flags=(HW=1)
+core_filename=mednafen_psx_libretro.so
+dest_filename=mednafen_psx_hw_libretro.so

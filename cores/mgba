@@ -1,0 +1,4 @@
+#!/bin/bash
+git_url=https://github.com/mgba-emu/mgba
+build_system=cmake
+cmake_flags=(-DCMAKE_BUILD_TYPE=Release -DBUILD_LIBRETRO=ON -DBUILD_QT=OFF -DBUILD_SDL=OFF -DSKIP_LIBRARY=ON)

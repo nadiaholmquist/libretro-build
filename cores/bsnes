@@ -1,0 +1,4 @@
+#!/bin/bash
+git_url=https://github.com/bsnes-emu/bsnes
+make_flags=("target=libretro")
+makefile_dir=bsnes

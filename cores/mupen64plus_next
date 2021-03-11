@@ -1,0 +1,4 @@
+#!/bin/bash
+git_url=https://github.com/libretro/mupen64plus-libretro-nx
+git_branch=develop
+make_flags=(HAVE_PARALLEL_RDP=1 HAVE_PARALLEL_RSP=1)

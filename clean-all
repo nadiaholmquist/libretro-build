@@ -1,0 +1,6 @@
+#!/bin/bash
+
+for core in cores/*; do
+	echo "Cleaning $(basename "$core")..."
+	./libretro-build "$(basename "$core")" clean
+done
