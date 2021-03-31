@@ -72,8 +72,17 @@ fetch() {
 	git fetch origin
 
 	if [[ $git_branch == "" ]]; then
-		tag=$(git describe --tags $(git rev-list --tags --max-count=1))
-		git checkout "$tag"
+		tag=$(git describe --tags $(git rev-list --tags --max-count=1)) || true
+		if [[ ! -z "$tag" ]]; then
+			git checkout "$tag"
+		else
+			main=$(git ls-remote --heads origin main)
+			if [[ ! -z "$main" ]]; then
+				git checkout origin/main
+			else
+				git checkout origin/master
+			fi
+		fi
 	else
 		git checkout origin/"$git_branch"
 	fi
