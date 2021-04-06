@@ -1,5 +1,5 @@
 #!/bin/bash
 git_url=https://github.com/NovaSquirrel/Mesen
 core_filename=bin/mesen_libretro.x64.so
-dest_filename=mesen_libretro.so
+dest_filename=mesen_libretro
 make_flags=(libretro)

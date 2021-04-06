@@ -3,7 +3,7 @@ git_url=https://github.com/LIJI32/SameBoy
 make_flags=(libretro CONF=release CC=clang)
 
 build() {
-	make "${make_flags[@]}" || true # bit of a hack
+	$make "${make_flags[@]}" || true # bit of a hack
 	chmod +x build/pb12
-	make "${make_flags[@]}"
+	$make "${make_flags[@]}"
 }
