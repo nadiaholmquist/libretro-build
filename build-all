@@ -1,11 +1,5 @@
 #!/usr/bin/env bash
 
 for core in cores/*; do
-	echo -n "Building $(basename "$core")... "
-	./libretro-build "$(basename "$core")" > /dev/null 2>&1
-	if [[ $? == 0 ]]; then
-		echo -e "\e[32mDone\e[0m"
-	else
-		echo -e "\e[31mFailed\e[0m"
-	fi
+	./libretro-build "$(basename "$core")"
 done
