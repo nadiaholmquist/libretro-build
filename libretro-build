@@ -59,7 +59,6 @@ run_step() {
 
 	if [[ $ret > 0 ]]; then
 		status "Failed" 31 1
-		echo ""
 	fi
 
 	return $ret
