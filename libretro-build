@@ -78,12 +78,14 @@ if [[ $(uname -s) == "Darwin" ]]; then
 	lib_ext=dylib
 	make=gmake
 	njobs=$(sysctl -n hw.ncpu)
+	osname=$(sw_vers -productName)
 else
 	os=linux
 	core_dir="$HOME/.config/retroarch/cores/"
 	lib_ext=so
 	make=make
 	njobs=$(nproc --all)
+	osname=$(uname -s)
 fi
 
 core_name=$1
@@ -99,6 +101,7 @@ git_url=
 git_branch=
 no_submodules=0
 build_system=make
+unsupported_os=()
 CFLAGS="-march=native -mtune=native"
 CXXFLAGS="-march=native -mtune=native"
 
@@ -146,6 +149,11 @@ fetch() {
 }
 
 source "cores/$core_name"
+
+if printf "%s\n" "${unsupported_os}" | grep -q "$os"; then
+	status "Not supported on $osname" 33 1
+	exit
+fi
 
 if [[ "$makefile" != "" ]]; then
 	makefile_flags+=(-f "$makefile")
